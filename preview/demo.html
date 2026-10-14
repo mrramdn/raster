@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Raster example: settings screen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="preview.css" />
+  </head>
+  <body>
+    <!-- Catat, an invented notes app: the account settings of one person, built only from Raster's recipes. -->
+    <header class="border-b border-border bg-card">
+      <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
+        <div class="flex items-center gap-8">
+          <a href="#" class="flex items-center gap-2.5 rounded-full">
+            <span class="inline-flex size-8 items-center justify-center rounded-full bg-foreground type-ui text-background">C</span>
+            <span class="type-title">Catat</span>
+          </a>
+          <nav aria-label="Main" class="hidden gap-1 sm:flex">
+            <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui text-foreground transition-colors hover:bg-accent">Notes</a>
+            <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui text-foreground transition-colors hover:bg-accent">Shared</a>
+            <a href="#" aria-current="page" class="inline-flex h-9 items-center justify-center gap-2 rounded-full bg-secondary px-4 type-ui text-secondary-foreground transition-colors hover:bg-input/60">Settings</a>
+          </nav>
+        </div>
+        <div class="flex items-center gap-1">
+          <button type="button" aria-label="Search notes" class="inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <button type="button" aria-label="Help" class="inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+          </button>
+          <span class="ml-2 inline-flex size-8 items-center justify-center rounded-full bg-secondary type-caption" aria-label="Nadia Rahmawati">NR</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-4 pt-8 pb-10 md:px-6">
+      <h1 class="type-h1">Settings</h1>
+      <p class="mt-1 type-small text-muted-foreground">Your account, devices and privacy. Changes to toggles apply at once.</p>
+
+      <div class="mt-6 grid items-start gap-4 md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr]">
+        <aside class="space-y-4 md:sticky md:top-4">
+          <div class="flex items-center gap-3 rounded-2xl border border-border bg-card p-6">
+            <span class="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-secondary type-ui">NR</span>
+            <div class="min-w-0">
+              <p class="truncate type-ui">Nadia Rahmawati</p>
+              <span class="mt-1 inline-flex h-7 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption"><span class="size-1.5 rounded-full bg-muted-foreground"></span>Free plan</span>
+            </div>
+          </div>
+          <nav aria-label="Settings sections" class="hidden md:block">
+            <ul id="sections" class="w-full divide-y divide-border overflow-hidden rounded-lg border border-border bg-card">
+              <li><a href="#profile" aria-current="true" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a></li>
+              <li><a href="#notifications" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>Notifications</a></li>
+              <li><a href="#appearance" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>Appearance</a></li>
+              <li><a href="#devices" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>Devices</a></li>
+              <li><a href="#storage" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><line x1="22" x2="2" y1="12" y2="12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" x2="6.01" y1="16" y2="16"/><line x1="10" x2="10.01" y1="16" y2="16"/></svg>Storage</a></li>
+              <li><a href="#privacy" class="flex h-12 items-center gap-3 px-4 type-ui transition-colors hover:bg-accent aria-[current=true]:bg-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-muted-foreground"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>Privacy</a></li>
+            </ul>
+          </nav>
+          <section id="storage" aria-labelledby="storage-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-6">
+            <h2 id="storage-title" class="type-title">Storage</h2>
+            <p class="mt-4 mb-2 flex items-baseline justify-between"><span><span class="type-h3">3.2 GB</span> <span class="type-small text-muted-foreground">of 5 GB</span></span><span class="type-small text-muted-foreground">64%</span></p>
+            <div role="progressbar" aria-label="Storage used" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" class="h-1.5 w-full overflow-hidden rounded-full bg-secondary"><div class="h-full w-[64%] rounded-full bg-primary"></div></div>
+            <p class="mt-3 type-small text-muted-foreground">Photos and scans use 2.4 GB. Catat Plus has 100 GB for Rp 29.000 a month.</p>
+            <button type="button" class="mt-4 inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 bg-secondary text-secondary-foreground hover:bg-input/60">See plans</button>
+          </section>
+        </aside>
+
+        <div class="grid items-start gap-4 lg:grid-cols-2">
+          <!-- Profile: the one main action of the screen is Save. -->
+          <section id="profile" aria-labelledby="profile-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7 lg:col-span-2">
+            <form id="profile-form" novalidate>
+              <div class="flex flex-wrap items-center gap-4">
+                <span class="inline-flex size-16 shrink-0 items-center justify-center rounded-full bg-secondary type-title">NR</span>
+                <div class="mr-auto">
+                  <h2 id="profile-title" class="type-title">Profile</h2>
+                  <p class="mt-1 type-small text-muted-foreground">People you share notes with see this name and photo.</p>
+                </div>
+                <div class="flex gap-2">
+                  <button type="button" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 bg-secondary text-secondary-foreground hover:bg-input/60">Change photo</button>
+                  <button type="button" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 text-foreground hover:bg-accent">Remove</button>
+                </div>
+              </div>
+              <div class="mt-6 grid items-start gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+                <label class="block w-full"><span class="type-ui">Name</span><input name="name" type="text" value="Nadia Rahmawati" autocomplete="name" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /></label>
+                <label class="block w-full"><span class="type-ui">Email</span><input id="email" name="email" type="email" value="nadia.rahma@example.com" autocomplete="email" aria-describedby="email-error" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /><span id="email-error" hidden class="mt-2 flex items-center gap-1.5 type-small"><span class="text-destructive"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg></span>Use an address such as nadia@example.com.</span></label>
+                <label class="block w-full"><span class="type-ui">Phone</span><input name="phone" type="tel" value="+62 812 2045 7319" autocomplete="tel" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /></label>
+              </div>
+              <div class="mt-6 flex flex-wrap items-center justify-end gap-3">
+                <p id="save-status" class="mr-auto flex min-h-7 w-full items-center gap-2 type-small text-muted-foreground sm:w-auto" role="status">Last changed 2 Oct 2026</p>
+                <button id="cancel" type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-40 text-foreground hover:bg-accent">Cancel</button>
+                <button id="save" type="submit" class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-40 bg-primary text-primary-foreground hover:bg-primary-hover">Save</button>
+              </div>
+            </form>
+          </section>
+
+          <section id="notifications" aria-labelledby="notifications-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7">
+            <h2 id="notifications-title" class="type-title">Notifications</h2>
+            <p class="mt-1 type-small text-muted-foreground">On your phone and in the app.</p>
+            <ul class="mt-5 w-full divide-y divide-border overflow-hidden rounded-lg border border-border">
+              <li class="flex h-12 items-center justify-between gap-4 px-4 type-ui">Reminders<button type="button" role="switch" aria-checked="true" aria-label="Reminders" class="group relative h-7.5 w-17.5 shrink-0 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40"><span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span></button></li>
+              <li class="flex h-12 items-center justify-between gap-4 px-4 type-ui">Edits to shared notes<button type="button" role="switch" aria-checked="true" aria-label="Edits to shared notes" class="group relative h-7.5 w-17.5 shrink-0 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40"><span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span></button></li>
+              <li class="flex h-12 items-center justify-between gap-4 px-4 type-ui">Weekly summary by email<button type="button" role="switch" aria-checked="false" aria-label="Weekly summary by email" class="group relative h-7.5 w-17.5 shrink-0 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40"><span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span></button></li>
+              <li class="flex h-12 items-center justify-between gap-4 px-4 type-ui">News about Catat<button type="button" role="switch" aria-checked="false" aria-label="News about Catat" class="group relative h-7.5 w-17.5 shrink-0 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40"><span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span></button></li>
+            </ul>
+            <p id="quiet-label" class="mt-6 type-ui">Quiet hours start</p>
+            <div role="group" aria-labelledby="quiet-label" data-chips class="mt-3 flex flex-wrap gap-2.5">
+              <button type="button" aria-pressed="false" class="h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border">Off</button>
+              <button type="button" aria-pressed="false" class="h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border">21:00</button>
+              <button type="button" aria-pressed="true" class="h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border">22:00</button>
+              <button type="button" aria-pressed="false" class="h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border">23:00</button>
+            </div>
+            <p class="mt-3 type-small text-muted-foreground">Until 06:00. Your own reminders still come through.</p>
+          </section>
+
+          <section id="appearance" aria-labelledby="appearance-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7">
+            <h2 id="appearance-title" class="type-title">Appearance</h2>
+            <p class="mt-1 type-small text-muted-foreground">How Catat looks on this device.</p>
+            <p id="theme-label" class="mt-5 type-ui">Theme</p>
+            <div id="theme" role="tablist" aria-labelledby="theme-label" class="mt-3 inline-flex rounded-full bg-secondary p-1">
+              <button type="button" role="tab" aria-selected="false" class="h-9 rounded-full px-4 type-ui text-muted-foreground transition-colors aria-selected:bg-card aria-selected:text-foreground aria-selected:shadow-sm">Light</button>
+              <button type="button" role="tab" aria-selected="false" class="h-9 rounded-full px-4 type-ui text-muted-foreground transition-colors aria-selected:bg-card aria-selected:text-foreground aria-selected:shadow-sm">Dark</button>
+              <button type="button" role="tab" aria-selected="true" class="h-9 rounded-full px-4 type-ui text-muted-foreground transition-colors aria-selected:bg-card aria-selected:text-foreground aria-selected:shadow-sm">Automatic</button>
+            </div>
+            <div class="mt-6 flex items-center justify-between">
+              <label for="text-size" class="type-ui">Text size in notes</label>
+              <output id="text-size-value" for="text-size" class="type-small text-muted-foreground">17 px</output>
+            </div>
+            <input id="text-size" type="range" min="13" max="22" value="17" class="raster-slider mt-3" />
+            <div class="mt-5 rounded-lg bg-background px-5 py-4">
+              <p class="type-caption text-muted-foreground">Preview</p>
+              <p id="text-preview" class="mt-1" style="font-size: 17px; line-height: 1.45">Pasar Sabtu: tempe, kangkung, bawang merah, and gula aren for Ibu.</p>
+            </div>
+          </section>
+
+          <section id="devices" aria-labelledby="devices-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7">
+            <h2 id="devices-title" class="type-title">Devices</h2>
+            <p class="mt-1 type-small text-muted-foreground">Where you are signed in to Catat.</p>
+            <ul id="device-list" class="mt-5 w-full divide-y divide-border overflow-hidden rounded-lg border border-border">
+              <li class="flex items-center gap-3 px-4 py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 text-muted-foreground"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></svg>
+                <div class="mr-auto min-w-0"><p class="flex flex-wrap items-center gap-x-2 gap-y-1 type-ui">Laptop<span class="inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption"><span class="size-1.5 rounded-full bg-success"></span>This device</span></p><p class="mt-0.5 type-small text-muted-foreground">Chrome on Windows · Cimahi</p></div>
+              </li>
+              <li class="flex items-center gap-3 px-4 py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 text-muted-foreground"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+                <div class="mr-auto min-w-0"><p class="flex flex-wrap items-center gap-x-2 gap-y-1 type-ui">Phone<span class="inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption"><span class="size-1.5 rounded-full bg-muted-foreground"></span>Active 2 days ago</span></p><p class="mt-0.5 type-small text-muted-foreground">Catat for Android · Bandung</p></div>
+                <button type="button" data-sign-out aria-label="Sign out of Phone" class="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 px-4 py-3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0 text-muted-foreground"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></svg>
+                <div class="mr-auto min-w-0"><p class="flex flex-wrap items-center gap-x-2 gap-y-1 type-ui">Tablet<span class="inline-flex h-7 shrink-0 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption"><span class="size-1.5 rounded-full bg-warning"></span>Active 3 weeks ago</span></p><p class="mt-0.5 type-small text-muted-foreground">Catat for iPadOS · Yogyakarta</p></div>
+                <button type="button" data-sign-out aria-label="Sign out of Tablet" class="inline-flex size-8 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg></button>
+              </li>
+            </ul>
+            <button id="sign-out-others" type="button" class="mt-4 inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 bg-secondary text-secondary-foreground hover:bg-input/60">Sign out of other devices</button>
+          </section>
+
+          <section id="privacy" aria-labelledby="privacy-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7">
+            <h2 id="privacy-title" class="type-title">Privacy</h2>
+            <p class="mt-1 type-small text-muted-foreground">Who can reach you, and what Catat keeps.</p>
+            <div class="mt-5 space-y-6">
+              <fieldset class="space-y-4">
+                <legend class="mb-4 type-ui">Who can share notes with you</legend>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="radio" name="share" class="size-5.5 appearance-none rounded-full border-[1.5px] border-input bg-card transition-[border-width,border-color] checked:border-7 checked:border-primary checked:bg-white disabled:opacity-40" />Anyone with my email</label>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="radio" name="share" checked class="size-5.5 appearance-none rounded-full border-[1.5px] border-input bg-card transition-[border-width,border-color] checked:border-7 checked:border-primary checked:bg-white disabled:opacity-40" />Only people in my contacts</label>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="radio" name="share" class="size-5.5 appearance-none rounded-full border-[1.5px] border-input bg-card transition-[border-width,border-color] checked:border-7 checked:border-primary checked:bg-white disabled:opacity-40" />No one</label>
+              </fieldset>
+              <fieldset class="space-y-4">
+                <legend class="mb-4 type-ui">Activity and data</legend>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="checkbox" checked class="raster-checkbox" />Show when I am editing a shared note</label>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="checkbox" class="raster-checkbox" />Let people find me by phone number</label>
+                <label class="flex items-center gap-2 type-small has-disabled:text-muted-foreground"><input type="checkbox" checked class="raster-checkbox" />Send anonymous crash reports</label>
+              </fieldset>
+            </div>
+          </section>
+
+          <section aria-labelledby="delete-title" class="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-border bg-card p-7 lg:col-span-2">
+            <div class="max-w-sm">
+              <h2 id="delete-title" class="type-title">Delete account</h2>
+              <p id="delete-note" class="mt-1 type-small text-muted-foreground">Your notes, photos and voice notes are removed after 30 days. Export them first if you want to keep a copy.</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-40 bg-secondary text-secondary-foreground hover:bg-input/60">Export notes</button>
+              <button id="delete" type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-40 bg-destructive text-destructive-foreground hover:bg-destructive/85">Delete account</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const root = document.documentElement;
+
+      // Toggles, chips and the theme control.
+      document.addEventListener('click', (event) => {
+        const toggle = event.target.closest('[role=switch]');
+        if (toggle) toggle.setAttribute('aria-checked', toggle.getAttribute('aria-checked') !== 'true');
+        const chip = event.target.closest('[data-chips] [aria-pressed]');
+        if (chip) for (const b of chip.parentElement.children) b.setAttribute('aria-pressed', b === chip);
+        const tab = event.target.closest('#theme [role=tab]');
+        if (tab) {
+          for (const t of tab.parentElement.children) t.setAttribute('aria-selected', t === tab);
+          const choice = tab.textContent;
+          root.classList.toggle('dark', choice === 'Dark' || (choice === 'Automatic' && matchMedia('(prefers-color-scheme: dark)').matches));
+        }
+      });
+
+      // The section list marks the section it jumps to.
+      const sections = document.getElementById('sections');
+      sections.addEventListener('click', (event) => {
+        const link = event.target.closest('a');
+        if (!link) return;
+        event.preventDefault();
+        for (const a of sections.querySelectorAll('a')) a.setAttribute('aria-current', a === link);
+        document.querySelector(link.getAttribute('href')).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      // Text size.
+      const size = document.getElementById('text-size');
+      const showSize = () => {
+        size.style.setProperty('--slider-fill', `${((size.value - size.min) / (size.max - size.min)) * 100}%`);
+        document.getElementById('text-size-value').textContent = `${size.value} px`;
+        document.getElementById('text-preview').style.fontSize = `${size.value}px`;
+      };
+      size.addEventListener('input', showSize);
+      showSize();
+
+      // Profile: check the email, then save.
+      const form = document.getElementById('profile-form');
+      const email = document.getElementById('email');
+      const error = document.getElementById('email-error');
+      const status = document.getElementById('save-status');
+      const save = document.getElementById('save');
+      const initial = Object.fromEntries(new FormData(form));
+      const spinner = '<span class="size-5 animate-spin rounded-full border-2 border-secondary border-t-primary"></span>';
+      const saved = '<span class="inline-flex h-7 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption text-foreground"><span class="size-1.5 rounded-full bg-success"></span>Saved</span>';
+      const setError = (on) => {
+        email.toggleAttribute('aria-invalid', on);
+        email.classList.toggle('border-destructive', on);
+        email.classList.toggle('border-input', !on);
+        error.hidden = !on;
+      };
+      email.addEventListener('input', () => setError(false));
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim())) {
+          setError(true);
+          email.focus();
+          return;
+        }
+        save.disabled = true;
+        status.innerHTML = `${spinner}Saving`;
+        setTimeout(() => {
+          save.disabled = false;
+          status.innerHTML = saved;
+        }, 900);
+      });
+      document.getElementById('cancel').addEventListener('click', () => {
+        for (const [name, value] of Object.entries(initial)) form.elements[name].value = value;
+        setError(false);
+        status.textContent = 'Last changed 2 Oct 2026';
+      });
+
+      // Devices.
+      const list = document.getElementById('device-list');
+      list.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-sign-out]');
+        if (button) button.closest('li').remove();
+      });
+      document.getElementById('sign-out-others').addEventListener('click', (event) => {
+        for (const button of list.querySelectorAll('[data-sign-out]')) button.closest('li').remove();
+        event.currentTarget.disabled = true;
+      });
+
+      // Delete asks once more before it does anything.
+      const remove = document.getElementById('delete');
+      remove.addEventListener('click', () => {
+        if (remove.dataset.armed) {
+          remove.disabled = true;
+          remove.textContent = 'Deletion scheduled';
+          document.getElementById('delete-note').textContent = 'Your account will be deleted on 13 Nov 2026. Sign in before then to cancel it.';
+          return;
+        }
+        remove.dataset.armed = 'true';
+        remove.textContent = 'Delete 1,284 notes';
+        document.getElementById('delete-note').textContent = 'Press again to schedule the deletion for 13 Nov 2026. You can still cancel it until then.';
+      });
+    </script>
+  </body>
+</html>

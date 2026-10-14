@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @import "../raster.css";
 
-/* Only the gallery is scanned for classes, so words in DESIGN.md or the README never add CSS. */
+/* Only the gallery and the demo screen are scanned for classes, so words in DESIGN.md or the README never add CSS. */
 @source "./index.html";
+@source "./demo.html";

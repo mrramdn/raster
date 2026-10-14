@@ -8,12 +8,13 @@ A soft, neutral design system: white cards on light gray, pill controls and one 
 
 | File | What it is |
 | --- | --- |
-| `raster.css` | Tailwind CSS v4 theme: color tokens (light and dark), radius, type utilities, slider utility. Token names follow shadcn/ui. |
+| `raster.css` | Tailwind CSS v4 theme: color tokens (light and dark), radius, type utilities, slider and checkbox utilities. Token names follow shadcn/ui. |
 | `DESIGN.md` | The rules and the component recipes, in the [design.md](https://github.com/google-labs-code/design.md) format. |
-| `preview/index.html` | Component gallery built with the theme. Has a dark mode switch, category filters, and copy and reset buttons per component. |
+| `preview/index.html` | Component gallery built with the theme: 18 live components with neutral placeholder content and their variants and states, a dark mode switch, category filters, and copy and reset buttons per component. |
+| `preview/demo.html` | An example screen built only from the recipes: the account settings of Catat, an invented notes app. |
 | `CHANGELOG.md` | What changed in each version. |
 
-Figma: [Raster Design System](https://www.figma.com/design/tQxnBjmeXskenoVIb4wCzd) (pages Cover, Foundations and Components).
+Figma: [Raster Design System](https://www.figma.com/design/tQxnBjmeXskenoVIb4wCzd) (pages Cover, Foundations, Components and Example; Example rebuilds the demo screen from instances in light and dark).
 
 ## Use it in a project
 
@@ -34,13 +35,13 @@ The theme removes the default Tailwind color palette on purpose. Use the semanti
 
 ```sh
 pnpm install
-pnpm build   # writes preview/preview.css from the classes in preview/index.html
+pnpm build   # writes preview/preview.css from the classes in preview/index.html and preview/demo.html
 pnpm dev     # same, watching for changes
 ```
 
-Then open `preview/index.html` in a browser. Copy needs a secure context, so serve the folder (`python3 -m http.server -d preview`) if the clipboard button does nothing over `file://`.
+Then open `preview/index.html` (the gallery) or `preview/demo.html` (the example screen) in a browser. Copy needs a secure context, so serve the folder (`python3 -m http.server -d preview`) if the clipboard button does nothing over `file://`.
 
-`npx @google/design.md lint DESIGN.md` checks the token file. It reports no errors; the warnings are tokens that only the prose uses and the documented 4.0:1 contrast of white on the blue.
+`npx @google/design.md lint DESIGN.md` checks the token file. It reports no errors; the warnings are tokens that only the prose uses and the documented contrast of white on the blue and on the red.
 
 ## Versions
 
@@ -54,4 +55,4 @@ The version is in `package.json`, `CHANGELOG.md` says what changed, and every re
 
 ## Where the look comes from
 
-The visual language was measured from one public screenshot of the COMPASS component gallery by Design Compass: colors sampled from the pixels, sizes and radii from the layout. Button, Toggle, Slider and Single Selection follow that screenshot. The other components, the dark mode and the type scale are extrapolated in the same style. This project is not affiliated with Design Compass and contains none of their code or assets.
+The visual language was measured from one public screenshot of the COMPASS component gallery by Design Compass: colors sampled from the pixels, sizes and radii from the layout. Button, Toggle, Slider and Single selection follow that screenshot. The other components, the dark mode and the type scale are extrapolated in the same style. This project is not affiliated with Design Compass and contains none of their code or assets.

@@ -38,78 +38,223 @@
         reset: icon('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>'),
         check: icon('<path d="M20 6 9 17l-5-5"/>'),
         contrast: icon('<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>', 20),
-        chevron: icon('<path d="m9 18 6-6-6-6"/>', 16),
+        chevron: icon('<path d="m9 18 6-6-6-6"/>'),
+        search: icon('<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>'),
+        plus: icon('<path d="M5 12h14"/><path d="M12 5v14"/>'),
+        more: icon('<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>'),
+        alert: icon('<circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/>'),
       };
 
+      // Class lists shared by several recipes. The markup each card copies is the same as in DESIGN.md.
+      const button = 'inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-base font-medium transition-colors disabled:pointer-events-none disabled:opacity-40';
+      const small = 'inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40';
+      const primary = 'bg-primary text-primary-foreground hover:bg-primary-hover';
+      const secondary = 'bg-secondary text-secondary-foreground hover:bg-input/60';
+      const ghost = 'text-foreground hover:bg-accent';
+      const destructive = 'bg-destructive text-destructive-foreground hover:bg-destructive/85';
+      const toggle = 'group relative h-7.5 w-17.5 shrink-0 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40';
+      const thumb = '<span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span>';
+      const option = 'flex items-center gap-2 type-small has-disabled:text-muted-foreground';
       const radio =
-        'size-5.5 appearance-none rounded-full border-[1.5px] border-input bg-card transition-[border-width,border-color] checked:border-7 checked:border-primary checked:bg-white';
+        'size-5.5 appearance-none rounded-full border-[1.5px] border-input bg-card transition-[border-width,border-color] checked:border-7 checked:border-primary checked:bg-white disabled:opacity-40';
+      const field = 'mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40';
+      const iconButton =
+        'inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground';
+      const iconButtonFilled =
+        'inline-flex size-10 items-center justify-center rounded-full bg-secondary text-foreground transition-colors hover:bg-input/60';
+      const chip =
+        'h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border';
       const tab =
         'h-9 rounded-full px-4 type-ui text-muted-foreground transition-colors aria-selected:bg-card aria-selected:text-foreground aria-selected:shadow-sm';
       const badge = 'inline-flex h-7 items-center gap-1.5 rounded-full bg-secondary px-3 type-caption';
-      const row = 'flex h-12 items-center justify-between px-4 type-ui';
+      const list = 'w-full divide-y divide-border overflow-hidden rounded-lg border border-border';
+      const row = 'flex h-12 items-center justify-between gap-4 px-4 type-ui';
+      const track = 'h-1.5 w-full overflow-hidden rounded-full bg-secondary';
+      const spinner = 'animate-spin rounded-full border-secondary border-t-primary';
 
       const components = [
         {
           name: 'Button',
           category: 'Input',
-          html: `<button type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-medium text-primary-foreground transition-colors hover:bg-primary-hover disabled:pointer-events-none disabled:opacity-40">Get Started</button>`,
+          html: `<div class="flex flex-col items-center gap-3">
+  <button type="button" class="${button} ${primary}">Save</button>
+  <button type="button" class="${button} ${secondary}">Cancel</button>
+  <button type="button" class="${button} ${ghost}">Skip</button>
+</div>`,
         },
         {
           name: 'Toggle',
           category: 'Input',
           stateful: true,
-          html: `<button type="button" role="switch" aria-checked="true" aria-label="Notifications" class="group relative h-7.5 w-17.5 rounded-full bg-input transition-colors aria-checked:bg-primary disabled:opacity-40"><span class="absolute top-1 left-1 h-5.5 w-9 rounded-full bg-white shadow-sm transition-transform group-aria-checked:translate-x-6.5"></span></button>`,
+          html: `<div class="flex flex-col items-center gap-5">
+  <button type="button" role="switch" aria-checked="true" aria-label="Option A" class="${toggle}">${thumb}</button>
+  <button type="button" role="switch" aria-checked="false" aria-label="Option B" class="${toggle}">${thumb}</button>
+  <button type="button" role="switch" aria-checked="true" aria-label="Option C" disabled class="${toggle}">${thumb}</button>
+</div>`,
         },
         {
           name: 'Slider',
           category: 'Input',
           stateful: true,
-          html: `<input type="range" min="0" max="100" value="50" aria-label="Volume" class="raster-slider" />`,
+          html: `<div class="w-full space-y-10">
+  <input type="range" min="0" max="100" value="50" aria-label="Volume" class="raster-slider" />
+  <input type="range" min="0" max="100" value="30" aria-label="Brightness" disabled class="raster-slider" />
+</div>`,
         },
         {
-          name: 'Single Selection',
+          name: 'Single selection',
           category: 'Input',
           stateful: true,
-          html: `<fieldset class="space-y-4"><legend class="sr-only">Fulfilment</legend><label class="flex items-center gap-2 type-small"><input type="radio" name="fulfilment" checked class="${radio}" />Delivery</label><label class="flex items-center gap-2 type-small"><input type="radio" name="fulfilment" class="${radio}" />Pickup</label><label class="flex items-center gap-2 type-small"><input type="radio" name="fulfilment" class="${radio}" />Visit</label></fieldset>`,
+          html: `<fieldset class="space-y-4">
+  <legend class="sr-only">Options</legend>
+  <label class="${option}"><input type="radio" name="option" checked class="${radio}" />Option A</label>
+  <label class="${option}"><input type="radio" name="option" class="${radio}" />Option B</label>
+  <label class="${option}"><input type="radio" name="option" disabled class="${radio}" />Option C</label>
+</fieldset>`,
         },
         {
-          name: 'Text Field',
+          name: 'Checkbox',
           category: 'Input',
           stateful: true,
-          html: `<label class="block w-full"><span class="type-ui">Email</span><input type="email" placeholder="name@example.com" class="mt-2 h-12 w-full rounded-full border border-input bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40" /></label>`,
+          html: `<fieldset class="space-y-4">
+  <legend class="sr-only">Options</legend>
+  <label class="${option}"><input type="checkbox" checked class="raster-checkbox" />Option A</label>
+  <label class="${option}"><input type="checkbox" class="raster-checkbox" />Option B</label>
+  <label class="${option}"><input type="checkbox" checked disabled class="raster-checkbox" />Option C</label>
+</fieldset>`,
         },
         {
-          name: 'Segmented',
+          name: 'Text field',
+          category: 'Input',
+          stateful: true,
+          html: `<label class="block w-full"><span class="type-ui">Email</span><input type="email" placeholder="name@example.com" class="${field} border-input" /></label>`,
+        },
+        {
+          name: 'Text field states',
+          category: 'Input',
+          stateful: true,
+          html: `<div class="w-full space-y-5">
+  <label class="block w-full"><span class="type-ui">Email</span><input type="email" value="name.example.com" aria-invalid="true" aria-describedby="email-error" class="${field} border-destructive" /><span id="email-error" class="mt-2 flex items-center gap-1.5 type-small"><span class="text-destructive">${icons.alert}</span>Add an @ to the address.</span></label>
+  <label class="block w-full"><span class="type-ui">Name</span><input type="text" placeholder="Your name" disabled class="${field} border-input" /></label>
+</div>`,
+        },
+        {
+          name: 'Button sizes',
+          category: 'Input',
+          html: `<div class="flex flex-col items-center gap-4">
+  <button type="button" class="${button} ${primary}">Continue</button>
+  <button type="button" class="${small} ${primary}">Continue</button>
+</div>`,
+        },
+        {
+          name: 'Destructive and disabled',
+          category: 'Input',
+          html: `<div class="flex flex-col items-center gap-3">
+  <button type="button" class="${button} ${destructive}">Delete</button>
+  <button type="button" disabled class="${button} ${primary}">Save</button>
+  <button type="button" disabled class="${button} ${secondary}">Cancel</button>
+</div>`,
+        },
+        {
+          name: 'Icon button',
+          category: 'Input',
+          html: `<div class="flex flex-col items-center gap-5">
+  <div class="flex gap-1">
+    <button type="button" aria-label="Search" class="${iconButton}">${icons.search}</button>
+    <button type="button" aria-label="Add" class="${iconButton}">${icons.plus}</button>
+    <button type="button" aria-label="More" class="${iconButton}">${icons.more}</button>
+  </div>
+  <div class="flex gap-2">
+    <button type="button" aria-label="Search" class="${iconButtonFilled}">${icons.search}</button>
+    <button type="button" aria-label="Add" class="${iconButtonFilled}">${icons.plus}</button>
+    <button type="button" aria-label="More" class="${iconButtonFilled}">${icons.more}</button>
+  </div>
+</div>`,
+        },
+        {
+          name: 'Chip',
           category: 'Navigation',
           stateful: true,
-          html: `<div role="tablist" aria-label="Period" class="inline-flex rounded-full bg-secondary p-1"><button type="button" role="tab" aria-selected="true" class="${tab}">Day</button><button type="button" role="tab" aria-selected="false" class="${tab}">Week</button><button type="button" role="tab" aria-selected="false" class="${tab}">Month</button></div>`,
+          html: `<div role="group" aria-label="Filter" class="flex flex-wrap justify-center gap-2.5">
+  <button type="button" aria-pressed="true" class="${chip}">All</button>
+  <button type="button" aria-pressed="false" class="${chip}">Active</button>
+  <button type="button" aria-pressed="false" class="${chip}">Pending</button>
+</div>`,
+        },
+        {
+          name: 'Segmented control',
+          category: 'Navigation',
+          stateful: true,
+          html: `<div role="tablist" aria-label="Period" class="inline-flex rounded-full bg-secondary p-1">
+  <button type="button" role="tab" aria-selected="true" class="${tab}">Day</button>
+  <button type="button" role="tab" aria-selected="false" class="${tab}">Week</button>
+  <button type="button" role="tab" aria-selected="false" class="${tab}">Month</button>
+</div>`,
         },
         {
           name: 'Badge',
           category: 'Status',
-          html: `<div class="flex flex-col items-start gap-2"><span class="${badge}"><span class="size-1.5 rounded-full bg-success"></span>Active</span><span class="${badge}"><span class="size-1.5 rounded-full bg-warning"></span>Pending</span><span class="${badge}"><span class="size-1.5 rounded-full bg-destructive"></span>Failed</span></div>`,
+          html: `<div class="flex flex-col items-start gap-2">
+  <span class="${badge}"><span class="size-1.5 rounded-full bg-success"></span>Active</span>
+  <span class="${badge}"><span class="size-1.5 rounded-full bg-warning"></span>Pending</span>
+  <span class="${badge}"><span class="size-1.5 rounded-full bg-destructive"></span>Failed</span>
+  <span class="${badge}"><span class="size-1.5 rounded-full bg-muted-foreground"></span>Draft</span>
+</div>`,
         },
         {
           name: 'Progress',
           category: 'Status',
-          html: `<div role="progressbar" aria-label="Upload" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" class="h-1.5 w-full overflow-hidden rounded-full bg-secondary"><div class="h-full w-[64%] rounded-full bg-primary"></div></div>`,
-        },
-        {
-          name: 'List',
-          category: 'Layout',
-          html: `<ul class="w-full divide-y divide-border overflow-hidden rounded-lg border border-border"><li class="${row}">Account<span class="text-muted-foreground">${icons.chevron}</span></li><li class="${row}">Notifications<span class="text-muted-foreground">${icons.chevron}</span></li><li class="${row}">Privacy<span class="text-muted-foreground">${icons.chevron}</span></li></ul>`,
+          html: `<div class="w-full space-y-6">
+  <div>
+    <p class="mb-2 flex justify-between type-small"><span>Upload</span><span class="text-muted-foreground">64%</span></p>
+    <div role="progressbar" aria-label="Upload" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" class="${track}"><div class="h-full w-[64%] rounded-full bg-primary"></div></div>
+  </div>
+  <div>
+    <p class="mb-2 flex justify-between type-small"><span>Download</span><span class="text-muted-foreground">28%</span></p>
+    <div role="progressbar" aria-label="Download" aria-valuenow="28" aria-valuemin="0" aria-valuemax="100" class="${track}"><div class="h-full w-[28%] rounded-full bg-primary"></div></div>
+  </div>
+</div>`,
         },
         {
           name: 'Spinner',
           category: 'Motion',
-          html: `<span role="status" aria-label="Loading" class="size-7 animate-spin rounded-full border-3 border-secondary border-t-primary"></span>`,
+          html: `<div class="flex items-center gap-6">
+  <span role="status" aria-label="Loading" class="size-7 border-3 ${spinner}"></span>
+  <span role="status" aria-label="Loading" class="size-5 border-2 ${spinner}"></span>
+</div>`,
+        },
+        {
+          name: 'List',
+          category: 'Layout',
+          html: `<ul class="${list}">
+  <li class="${row}">Account<span class="text-muted-foreground">${icons.chevron}</span></li>
+  <li class="${row}">Notifications<span class="text-muted-foreground">${icons.chevron}</span></li>
+  <li class="${row}">Privacy<span class="text-muted-foreground">${icons.chevron}</span></li>
+</ul>`,
+        },
+        {
+          name: 'List with controls',
+          category: 'Layout',
+          stateful: true,
+          html: `<ul class="${list}">
+  <li class="${row}">Notifications<button type="button" role="switch" aria-checked="true" aria-label="Notifications" class="${toggle}">${thumb}</button></li>
+  <li class="${row}">Language<span class="flex items-center gap-1 type-small text-muted-foreground">English${icons.chevron}</span></li>
+  <li class="${row}">Sync<span class="${badge}"><span class="size-1.5 rounded-full bg-success"></span>Active</span></li>
+</ul>`,
+        },
+        {
+          name: 'Card',
+          category: 'Layout',
+          html: `<article class="w-full rounded-2xl border border-border bg-card p-6">
+  <h3 class="type-title">Card title</h3>
+  <p class="mt-1 type-small text-muted-foreground">Supporting text that explains the item in a line or two.</p>
+  <div class="mt-5 flex gap-2">
+    <button type="button" class="${small} ${primary}">Continue</button>
+    <button type="button" class="${small} ${ghost}">Cancel</button>
+  </div>
+</article>`,
         },
       ];
-
-      const iconButton =
-        'inline-flex size-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground';
-      const chip =
-        'h-8 shrink-0 rounded-full bg-secondary px-3.5 type-ui text-muted-foreground transition-colors hover:text-foreground aria-pressed:bg-card aria-pressed:text-foreground aria-pressed:ring-2 aria-pressed:ring-border';
 
       const gallery = document.getElementById('gallery');
       const filters = document.getElementById('filters');
@@ -126,7 +271,7 @@
         .map(
           (c, i) => `<article data-index="${i}" data-category="${c.category}" class="flex aspect-[9/10] flex-col rounded-2xl border border-border bg-card">
             <div data-demo class="flex flex-1 items-center justify-center px-6 pt-6">${c.html}</div>
-            <footer class="flex h-16 items-center justify-between pr-4.5 pb-2 pl-7">
+            <footer class="flex h-16 items-center justify-between pr-4 pb-2 pl-6">
               <h2 class="type-ui">${c.name}</h2>
               <div class="flex">
                 ${c.stateful ? `<button type="button" data-reset aria-label="Reset ${c.name}" class="${iconButton}">${icons.reset}</button>` : ''}
@@ -152,16 +297,18 @@
       gallery.addEventListener('input', (event) => syncSliders(event.target.parentElement));
 
       gallery.addEventListener('click', async (event) => {
-        const card = event.target.closest('article');
+        const card = event.target.closest('article[data-index]');
         if (!card) return;
         const component = components[card.dataset.index];
-        const toggle = event.target.closest('[role=switch]');
+        const demo = card.querySelector('[data-demo]');
+        const toggled = event.target.closest('[role=switch]');
         const selected = event.target.closest('[role=tab]');
+        const pressed = demo.contains(event.target) && event.target.closest('[aria-pressed]');
         const copy = event.target.closest('[data-copy]');
-        if (toggle) toggle.setAttribute('aria-checked', toggle.getAttribute('aria-checked') !== 'true');
+        if (toggled) toggled.setAttribute('aria-checked', toggled.getAttribute('aria-checked') !== 'true');
         if (selected) for (const t of selected.parentElement.children) t.setAttribute('aria-selected', t === selected);
+        if (pressed) for (const b of pressed.parentElement.children) b.setAttribute('aria-pressed', b === pressed);
         if (event.target.closest('[data-reset]')) {
-          const demo = card.querySelector('[data-demo]');
           demo.innerHTML = component.html;
           syncSliders(demo);
         }
