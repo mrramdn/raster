@@ -24,11 +24,10 @@
             class="inline-flex size-9 items-center justify-center rounded-full transition-colors hover:bg-accent"
           ></button>
         </div>
-        <div id="filters" class="-mx-1 mt-3 flex gap-2.5 overflow-x-auto p-1" role="group" aria-label="Filter components"></div>
       </div>
     </header>
 
-    <main id="gallery" class="mx-auto grid max-w-7xl grid-cols-1 gap-4 p-4 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></main>
+    <main id="gallery" class="mx-auto max-w-7xl px-4 pb-8"></main>
 
     <script>
       const icon = (paths, size = 16) =>
@@ -257,42 +256,37 @@
       ];
 
       const gallery = document.getElementById('gallery');
-      const filters = document.getElementById('filters');
       const syncSliders = (root) =>
         root.querySelectorAll('input[type=range]').forEach((el) => {
           el.style.setProperty('--slider-fill', `${((el.value - el.min) / (el.max - el.min)) * 100}%`);
         });
 
       document.getElementById('theme').innerHTML = icons.contrast;
-      filters.innerHTML = ['All', 'Input', 'Navigation', 'Status', 'Layout', 'Motion']
-        .map((name, i) => `<button type="button" aria-pressed="${i === 0}" class="${chip}">${name}</button>`)
-        .join('');
-      gallery.innerHTML = components
-        .map(
-          (c, i) => `<article data-index="${i}" data-category="${c.category}" class="flex aspect-[9/10] flex-col rounded-2xl border border-border bg-card">
+      // Cards are grouped by category, in the order each category first appears, each group under its own heading.
+      const card = (c, i) => `<article data-index="${i}" class="flex aspect-[9/10] flex-col rounded-2xl border border-border bg-card">
             <div data-demo class="flex flex-1 items-center justify-center px-6 pt-6">${c.html}</div>
             <footer class="flex h-16 items-center justify-between pr-4 pb-2 pl-6">
-              <h2 class="type-ui">${c.name}</h2>
+              <h3 class="type-ui">${c.name}</h3>
               <div class="flex">
                 ${c.stateful ? `<button type="button" data-reset aria-label="Reset ${c.name}" class="${iconButton}">${icons.reset}</button>` : ''}
                 <button type="button" data-copy aria-label="Copy ${c.name} markup" class="${iconButton}">${icons.copy}</button>
               </div>
             </footer>
-          </article>`,
-        )
+          </article>`;
+      const categories = [...new Set(components.map((c) => c.category))];
+      gallery.innerHTML = categories
+        .map((category) => {
+          const id = `group-${category.toLowerCase()}`;
+          const cards = components.map((c, i) => (c.category === category ? card(c, i) : '')).join('');
+          return `<section aria-labelledby="${id}">
+          <h2 id="${id}" class="pt-8 pb-4 type-title">${category}</h2>
+          <div class="grid grid-cols-1 gap-4 min-[480px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">${cards}</div>
+        </section>`;
+        })
         .join('');
       syncSliders(gallery);
 
       document.getElementById('theme').addEventListener('click', () => document.documentElement.classList.toggle('dark'));
-
-      filters.addEventListener('click', (event) => {
-        const button = event.target.closest('button');
-        if (!button) return;
-        for (const b of filters.children) b.setAttribute('aria-pressed', b === button);
-        for (const card of gallery.children) {
-          card.hidden = button.textContent !== 'All' && card.dataset.category !== button.textContent;
-        }
-      });
 
       gallery.addEventListener('input', (event) => syncSliders(event.target.parentElement));
 

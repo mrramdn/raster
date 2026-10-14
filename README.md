@@ -10,7 +10,7 @@ A soft, neutral design system: white cards on light gray, pill controls and one 
 | --- | --- |
 | `raster.css` | Tailwind CSS v4 theme: color tokens (light and dark), radius, type utilities, slider and checkbox utilities. Token names follow shadcn/ui. |
 | `DESIGN.md` | The rules and the component recipes, in the [design.md](https://github.com/google-labs-code/design.md) format. |
-| `preview/index.html` | Component gallery built with the theme: 18 live components with neutral placeholder content and their variants and states, a dark mode switch, category filters, and copy and reset buttons per component. |
+| `preview/index.html` | Component gallery built with the theme: 18 live components with neutral placeholder content and their variants and states, grouped under category headings, with a dark mode switch and copy and reset buttons per component. |
 | `preview/demo.html` | An example screen built only from the recipes: the account settings of Catat, an invented notes app. |
 | `CHANGELOG.md` | What changed in each version. |
 

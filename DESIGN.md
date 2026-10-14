@@ -285,7 +285,8 @@ Rules:
 - Spacing uses the Tailwind 4px unit. Common steps: 8 (inside a control), 16 (between cards, page margin, between stacked options), 24 to 28 (card padding).
 - The page is `bg-background`. Content lives in cards; do not place loose content directly on the gray except the page title.
 - Cards form a grid with `gap-4` and `p-4` page margins: one column on phones, two from 480px, three from 1024px, four from 1280px. Gallery cards keep a 9:10 ratio (`aspect-[9/10]`).
-- A sticky or top header is a `bg-card` bar with a bottom border. Filters are a horizontal row of chips with `gap-2.5` that scrolls on small screens.
+- A sticky or top header is a `bg-card` bar with a bottom border. Keep it to the wordmark and a few actions.
+- Group a long page of cards under section titles: an `h2` in `type-title`, 32px above it and 16px below (`pt-8 pb-4`), aligned with the card edge.
 - Inside a gallery card, the content is centered and the footer holds the title on the left and quiet icon buttons on the right. The title starts at the same 24px edge as the content.
 - A product screen puts its sections in cards of 24 to 28px padding, with the page title on the gray above them and the section list in a card of its own.
 

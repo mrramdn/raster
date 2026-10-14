@@ -3,6 +3,12 @@
 Raster uses semantic versions. While it is in beta, a minor version adds or changes tokens, components or rules,
 and a patch fixes them. Every version is a git tag (`v0.1.0`) and an entry in the design site's record.
 
+## 0.2.1 (2026-10-15)
+
+- The gallery has no filter row under the header any more. Its 18 cards are grouped under category headings
+  (Input, Navigation, Status, Motion, Layout) in `type-title`, 32px above and 16px below; card names are `h3`.
+- Figma: the filter chip row is gone from the headers of `Gallery/Light` and `Gallery/Dark`.
+
 ## 0.2.0 (2026-10-14)
 
 A blank component sheet, the missing components and an example screen.
