@@ -3,6 +3,13 @@
 Raster uses semantic versions. While it is in beta, a minor version adds or changes tokens, components or rules,
 and a patch fixes them. Every version is a git tag (`v0.1.0`) and an entry in the design site's record.
 
+## 0.2.2 (2026-10-24)
+
+For screen readers; nothing looks different.
+
+- The gallery's title, Raster, is its `h1`.
+- The Figma library does not change.
+
 ## 0.2.1 (2026-10-15)
 
 - The gallery has no filter row under the header any more. Its 18 cards are grouped under category headings

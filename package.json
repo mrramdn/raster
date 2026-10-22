@@ -1,6 +1,6 @@
 {
   "name": "raster",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "description": "Raster: a soft, neutral design system for Tailwind CSS v4, DESIGN.md and Figma",
   "scripts": {
