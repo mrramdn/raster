@@ -55,4 +55,4 @@ The version is in `package.json`, `CHANGELOG.md` says what changed, and every re
 
 ## Where the look comes from
 
-The visual language was measured from one public screenshot of the COMPASS component gallery by Design Compass: colors sampled from the pixels, sizes and radii from the layout. Button, Toggle, Slider and Single selection follow that screenshot. The other components, the dark mode and the type scale are extrapolated in the same style. This project is not affiliated with Design Compass and contains none of their code or assets.
+The visual language was measured from one public image, the header of an article that shows a component gallery. The colors were sampled from the image's pixels, and the sizes and radii from its layout. Button, Toggle, Slider and Single selection follow that image. The other components, the dark mode and the type scale are extrapolated in the same style. [Raster's page](https://uiux.mrramdn.com/en/systems/raster) on the design site credits the article and links to it. This project is not affiliated with the gallery's makers and contains none of their code or assets.
