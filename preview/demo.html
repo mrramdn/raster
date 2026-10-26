@@ -14,10 +14,7 @@
     <header class="border-b border-border bg-card">
       <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 md:px-6">
         <div class="flex items-center gap-8">
-          <a href="#" class="flex items-center gap-2.5 rounded-full">
-            <span class="inline-flex size-8 items-center justify-center rounded-full bg-foreground type-ui text-background">C</span>
-            <span class="type-title">Catat</span>
-          </a>
+          <a href="#" class="rounded-full type-title">Catat</a>
           <nav aria-label="Main" class="hidden gap-1 sm:flex">
             <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui text-foreground transition-colors hover:bg-accent">Notes</a>
             <a href="#" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui text-foreground transition-colors hover:bg-accent">Shared</a>
@@ -72,12 +69,10 @@
           <!-- Profile: the one main action of the screen is Save. -->
           <section id="profile" aria-labelledby="profile-title" class="scroll-mt-4 rounded-2xl border border-border bg-card p-7 lg:col-span-2">
             <form id="profile-form" novalidate>
-              <div class="flex flex-wrap items-center gap-4">
+              <h2 id="profile-title" class="type-title">Profile</h2>
+              <p class="mt-1 type-small text-muted-foreground">People you share notes with see this name and photo.</p>
+              <div class="mt-5 flex flex-wrap items-center gap-4">
                 <span class="inline-flex size-16 shrink-0 items-center justify-center rounded-full bg-secondary type-title">NR</span>
-                <div class="mr-auto">
-                  <h2 id="profile-title" class="type-title">Profile</h2>
-                  <p class="mt-1 type-small text-muted-foreground">People you share notes with see this name and photo.</p>
-                </div>
                 <div class="flex gap-2">
                   <button type="button" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 bg-secondary text-secondary-foreground hover:bg-input/60">Change photo</button>
                   <button type="button" class="inline-flex h-9 items-center justify-center gap-2 rounded-full px-4 type-ui transition-colors disabled:pointer-events-none disabled:opacity-40 text-foreground hover:bg-accent">Remove</button>
@@ -86,7 +81,7 @@
               <div class="mt-6 grid items-start gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
                 <label class="block w-full"><span class="type-ui">Name</span><input name="name" type="text" value="Nadia Rahmawati" autocomplete="name" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /></label>
                 <label class="block w-full"><span class="type-ui">Email</span><input id="email" name="email" type="email" value="nadia.rahma@example.com" autocomplete="email" aria-describedby="email-error" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /><span id="email-error" hidden class="mt-2 flex items-center gap-1.5 type-small"><span class="text-destructive"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg></span>Use an address such as nadia@example.com.</span></label>
-                <label class="block w-full"><span class="type-ui">Phone</span><input name="phone" type="tel" value="+62 812 2045 7319" autocomplete="tel" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /></label>
+                <label class="block w-full"><span class="type-ui">Phone</span><input name="phone" type="tel" value="+62 811 •••• 0420" autocomplete="tel" class="mt-2 h-12 w-full rounded-full border bg-card px-5 text-base placeholder:text-muted-foreground disabled:opacity-40 border-input" /></label>
               </div>
               <div class="mt-6 flex flex-wrap items-center justify-end gap-3">
                 <p id="save-status" class="mr-auto flex min-h-7 w-full items-center gap-2 type-small text-muted-foreground sm:w-auto" role="status">Last changed 2 Oct 2026</p>

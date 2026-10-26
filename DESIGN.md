@@ -3,8 +3,8 @@ version: alpha
 name: Raster
 description: A soft, neutral design system. White cards on light gray, pill controls and one blue.
 colors:
-  primary: "#007AFF"
-  primary-hover: "#006AE0"
+  primary: "#0066E0"
+  primary-hover: "#0058C2"
   primary-foreground: "#FFFFFF"
   background: "#F4F4F4"
   foreground: "#0A0A0A"
@@ -18,7 +18,7 @@ colors:
   muted-foreground: "#666666"
   accent: "#EEEEEE"
   accent-foreground: "#0A0A0A"
-  destructive: "#FF3B30"
+  destructive: "#D70015"
   destructive-foreground: "#FFFFFF"
   success: "#34C759"
   warning: "#FF9500"
@@ -204,9 +204,11 @@ components:
 
 ## Overview
 
+Raster is by Rifki Ramdani (https://uiux.mrramdn.com/en/systems/raster). This file is licensed under CC BY 4.0: copy and adapt it, with credit. The CSS and HTML are MIT.
+
 Raster is a soft, neutral system for product interfaces. Content sits on white cards with a 32px radius, the cards sit on a light gray page, every control is a pill, and one blue marks what is on, selected or primary. Nothing else has color unless it reports a status.
 
-The visual language was measured from a public screenshot of a component gallery (colors sampled from the pixels, sizes from the layout). Button, Toggle, Slider and Single Selection follow that screenshot closely. Everything else in this file extends the same language.
+The look is quiet on purpose: depth comes from the step between the gray page and a white card with a 1px border rather than from shadows, everything you can touch is set in medium-weight Inter, and nothing has a square corner. Button, Toggle, Slider and Single Selection set the language, and every other component in this file is built from the same parts.
 
 The same tokens exist in three places and must stay in sync:
 
@@ -226,33 +228,37 @@ Use semantic tokens only. The default Tailwind palette is removed in `raster.css
 | `foreground` | `#0A0A0A` | `#FAFAFA` | Text and icons |
 | `card` | `#FFFFFF` | `#1A1A1A` | Cards, header bar, selected chip, form controls |
 | `popover` | `#FFFFFF` | `#1A1A1A` | Menus, popovers, dialogs |
-| `primary` | `#007AFF` | `#0A84FF` | Primary button and the on state of toggle, slider, radio |
-| `primary-hover` | `#006AE0` | `#3D9BFF` | Hover fill for primary |
+| `primary` | `#0066E0` | `#0066E0` | Primary button and the on state of toggle, slider, radio |
+| `primary-hover` | `#0058C2` | `#0071E3` | Hover fill for primary |
 | `primary-foreground` | `#FFFFFF` | `#FFFFFF` | Text on primary |
 | `secondary` | `#EEEEEE` | `#2A2A2A` | Unselected chips, secondary buttons, tracks |
 | `muted` | `#EEEEEE` | `#2A2A2A` | Subtle surface behind grouped content |
 | `muted-foreground` | `#666666` | `#A1A1A1` | Secondary text and resting icons |
 | `accent` | `#EEEEEE` | `#2A2A2A` | Hover surface for ghost and icon buttons |
-| `destructive` | `#FF3B30` | `#FF453A` | Errors and destructive actions |
+| `destructive` | `#D70015` | `#D70015` | Errors and destructive actions |
 | `success` | `#34C759` | `#30D158` | Success indicator |
 | `warning` | `#FF9500` | `#FF9F0A` | Warning indicator |
 | `border` | `#EBEBEB` | `#2A2A2A` | Card outlines, dividers, ring of the selected chip |
 | `input` | `#D1D1D1` | `#4A4A4A` | Outline of form controls, off track of a toggle |
 | `ring` | `#007AFF` | `#0A84FF` | Focus ring |
 
-`card-foreground`, `popover-foreground`, `secondary-foreground` and `accent-foreground` equal `foreground`. `destructive-foreground` is white. Dark mode is the `.dark` class on a parent element.
+`card-foreground`, `popover-foreground`, `secondary-foreground` and `accent-foreground` equal `foreground`. `destructive-foreground` is white. Dark mode is the `.dark` class on a parent element. The .dark block also sets color-scheme: dark, so native controls and scrollbars follow the theme.
 
 Rules:
 
 - One blue. `primary` is for the single main action of a view and for on or selected states. Do not use it for decoration, headings or large surfaces.
 - `accent` is the hover surface, as in shadcn/ui. It is not a brand accent.
-- `destructive`, `success` and `warning` are fills, dots and icons. For status text, write the status in `foreground` next to a colored dot or icon.
+- `destructive`, `success` and `warning` are fills, dots and icons. For status text, write the status in `foreground` next to a colored dot or icon. The word carries the meaning: the `destructive` dot on the dark `secondary` chip is only 2.7:1.
 - `muted-foreground` passes WCAG AA on `card`, `background` and `secondary` in both modes.
 
-Three values are kept faithful to the reference or to the iOS palette it uses, and fall short of WCAG AA in both modes. Change them if the product needs strict conformance:
+`primary` and `destructive` keep the same fill in both modes, so white labels pass WCAG AA everywhere (AA asks 4.5:1 for 16px text):
 
-- White text on `primary` is 4.0:1 on `#007AFF`, 3.6:1 on the dark mode's `#0A84FF` and 2.9:1 on its hover `#3D9BFF` (AA asks 4.5:1 for 16px text). `#0066E0` gives 5.3:1 in both modes with nearly the same look, with a hover that stays at 4.5:1 or more, such as `#0058C2`.
-- White text on `destructive` is 3.6:1 on `#FF3B30` and 3.4:1 on the dark mode's `#FF453A`. `#D70015` gives 5.4:1 and still reads as the system red. The red outline of a field with an error is 3.6:1 on white and 5.1:1 on the dark card, which passes the 3:1 asked of control boundaries.
+- White text on `primary` `#0066E0` is 5.3:1. On the hover fill it is 6.6:1 on the light `#0058C2` and 4.7:1 on the dark `#0071E3`, which is lighter, so hover still reads as a change on a dark page. As a fill for on and selected states, `primary` is 5.3:1 on white, 4.8:1 on the light `background`, 3.3:1 on the dark `card` and 4.0:1 on the dark `background`, all above the 3:1 asked of state indicators.
+- White text on `destructive` `#D70015` is 5.4:1, and 4.8:1 or more on its hover (`destructive` at 85% over white or the light gray page; 6.7:1 over the dark card). The red outline of a field with an error is 5.4:1 on white and 3.2:1 on the dark card, which passes the 3:1 asked of control boundaries.
+- `ring` stays the lighter blue, `#007AFF` and `#0A84FF`, so focus stands out from a primary fill: 4.0:1 on white, 3.6:1 on the light page, 4.8:1 on the dark card and 5.8:1 on the dark page.
+
+One value falls short of WCAG AA in both modes. Change it if the product needs strict conformance:
+
 - The `input` outline is 1.5:1 for `#D1D1D1` on white and 2.0:1 for `#4A4A4A` on the dark `card` `#1A1A1A` (AA asks 3:1 for control boundaries). `#949494` reaches 3:1 on white, `#666666` on the dark card.
 
 ## Typography
@@ -356,7 +362,7 @@ Destructive is the red fill, for an action that deletes or cannot be undone. Use
 </div>
 ```
 
-White on `destructive` is 3.6:1 in light mode and 3.4:1 in dark mode; see Colors for the AA-safe value.
+White on `destructive` is 5.4:1 in both modes, and 4.8:1 or more on the hover fill; see Colors.
 
 ### Icon button
 
@@ -572,3 +578,4 @@ Every interactive element gets the global focus ring from `raster.css`: a 2px `r
 - Don't add shadows to cards. Only thumbs and floating surfaces have one.
 - Don't use the default Tailwind palette or hard-coded hex values in components.
 - Don't shrink interface text below 12px or text inputs below 16px.
+- Don't put an icon, a logo mark or an initials badge beside the wordmark or a headline: both are text only.

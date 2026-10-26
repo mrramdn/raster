@@ -13,6 +13,9 @@ A soft, neutral design system: white cards on light gray, pill controls and one 
 | `preview/index.html` | Component gallery built with the theme: 18 live components with neutral placeholder content and their variants and states, grouped under category headings, with a dark mode switch and copy and reset buttons per component. |
 | `preview/demo.html` | An example screen built only from the recipes: the account settings of Catat, an invented notes app. |
 | `CHANGELOG.md` | What changed in each version. |
+| `LICENSE` | MIT for the CSS and the preview, CC BY 4.0 for `DESIGN.md` and the Figma library. |
+| `scripts/check-version.mjs` | `pnpm check`: fails while a place that names the release disagrees with `package.json`. |
+| `scripts/banner-first.mjs` | Run by `pnpm build`: puts the theme's `/*!` banner back on line 1 of `preview/preview.css`, above Tailwind's. |
 
 Figma: [Raster Design System](https://www.figma.com/design/tQxnBjmeXskenoVIb4wCzd) (pages Cover, Foundations, Components and Example; Example rebuilds the demo screen from instances in light and dark).
 
@@ -41,18 +44,25 @@ pnpm dev     # same, watching for changes
 
 Then open `preview/index.html` (the gallery) or `preview/demo.html` (the example screen) in a browser. Copy needs a secure context, so serve the folder (`python3 -m http.server -d preview`) if the clipboard button does nothing over `file://`.
 
-`npx @google/design.md lint DESIGN.md` checks the token file. It reports no errors; the warnings are tokens that only the prose uses and the documented contrast of white on the blue and on the red.
+`npx @google/design.md lint DESIGN.md` checks the token file. It reports no errors and no contrast warnings; the eight warnings are tokens that only the prose uses.
 
 ## Versions
 
 The version is in `package.json`, `CHANGELOG.md` says what changed, and every release is a git tag. To release:
 
-1. Change the files and run `pnpm build`, so `preview/preview.css` matches the gallery.
-2. Raise `version` in `package.json` and add an entry to `CHANGELOG.md`.
-3. Commit, tag `v<version>` (`git tag -a v0.2.0 -m "Raster 0.2.0"`) and push with `git push --follow-tags`.
-4. On the design site, sync this folder and add the version to Raster's record. The site's tests fail while the
-   record states a different version from the synced files.
+1. Change the files and run `pnpm build`, so `preview/preview.css` matches.
+2. Raise the version everywhere it is written: `version` in `package.json`, a new entry at the top of `CHANGELOG.md`, the `/*!` banner on line 1 of `raster.css` and `preview/input.css`, and `--raster-build` in `raster.css`'s `:root`. Run `pnpm build` again and `pnpm check`, which fails while any of them differ.
+3. Commit, tag `v<version>` (`git tag -a v0.3.0 -m "Raster 0.3.0"`) and push with `git push --follow-tags`, then publish a GitHub Release from the tag with the CHANGELOG entry.
+4. On the design site, run `pnpm sync:system raster <this folder>`, put the pictures in `public/images/raster/<version>/`, and add the version to the record. The site's tests fail while the record, the synced files or a version the gallery names disagree.
+5. Optionally, after the site deploys, save a Wayback snapshot of the product page in both languages.
 
-## Where the look comes from
+## The look
 
-The visual language was measured from one public image, the header of an article that shows a component gallery. The colors were sampled from the image's pixels, and the sizes and radii from its layout. Button, Toggle, Slider and Single selection follow that image. The other components, the dark mode and the type scale are extrapolated in the same style. [Raster's page](https://uiux.mrramdn.com/en/systems/raster) on the design site credits the article and links to it. This project is not affiliated with the gallery's makers and contains none of their code or assets.
+Raster is calm and rounded. Content sits on white cards with a 32px radius on a light gray page, depth comes from that step and a 1px border rather than from shadows, every control is a pill, and a single blue marks what is on, selected or primary. Button, Toggle, Slider and Single selection set the language; the other components, the dark mode and the type scale are built from the same parts. `DESIGN.md` has the rules and the contrast of the main color pairs.
+
+## Licence
+
+The code and the written rules are licensed separately; [`LICENSE`](LICENSE) has both texts.
+
+- `raster.css` and everything in `preview/` (HTML and CSS) are under the MIT License.
+- `DESIGN.md` and the Figma library "Raster Design System" are under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Copy and adapt them, also commercially, with credit: "Raster by Rifki Ramdani, https://uiux.mrramdn.com/en/systems/raster".

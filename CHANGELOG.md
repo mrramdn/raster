@@ -3,6 +3,34 @@
 Raster uses semantic versions. While it is in beta, a minor version adds or changes tokens, components or rules,
 and a patch fixes them. Every version is a git tag (`v0.1.0`) and an entry in the design site's record.
 
+## 0.3.0 (2026-10-26)
+
+Button labels reach WCAG AA in both modes, and the files say who made them and how they may be used.
+
+- `primary` is `#0066E0` in both modes (was `#007AFF` light, `#0A84FF` dark), `primary-hover` is `#0058C2` light
+  and `#0071E3` dark (was `#006AE0` and `#3D9BFF`), and `destructive` is `#D70015` in both modes (was `#FF3B30`
+  and `#FF453A`). White labels are now 5.3:1 on the blue and 5.4:1 on the red, and at least 4.7:1 on every hover
+  fill, where before they were 2.9:1 to 4.0:1. `ring` keeps the lighter blues `#007AFF` and `#0A84FF`, so focus
+  still stands out. `DESIGN.md`'s front matter, Colors table and contrast notes give the new values and ratios;
+  only the `input` outline is still below AA.
+- A licence: `LICENSE` puts `raster.css` and `preview/` under MIT and `DESIGN.md` and the Figma library under
+  CC BY 4.0. `package.json` says `MIT AND CC-BY-4.0`, line 1 of `raster.css` (carried into
+  `preview/preview.css`) names the release, the author and the licence, and `DESIGN.md` opens its Overview with
+  the same.
+- `color-scheme: light` in `:root` and `color-scheme: dark` in `.dark`, so native controls and scrollbars follow
+  the theme.
+- `--raster-build` in `:root` names the release a copy of `raster.css` came from. It is not a token; nothing
+  reads it.
+- `pnpm check` (`scripts/check-version.mjs`) fails while `package.json`, this file, the banners and
+  `--raster-build` name different versions. `pnpm build` now also runs `scripts/banner-first.mjs`, which keeps the
+  theme's banner on line 1 of `preview/preview.css`, above Tailwind's own. The README's release steps now cover
+  `pnpm check`, the GitHub Release and the design site's pictures.
+- The example screen's phone number is an invented, masked one.
+- The example screen's header shows Catat as a word, without the round C beside it, and the Profile card's heading
+  stands alone above the photo and its buttons. `DESIGN.md`'s Do's and Don'ts say the wordmark and headlines carry
+  no icon, logo mark or initials badge.
+- Figma: the variables `primary`, `primary-hover` and `destructive` take the new values.
+
 ## 0.2.2 (2026-10-24)
 
 For screen readers; nothing looks different.

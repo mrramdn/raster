@@ -1,3 +1,4 @@
+/*! Raster 0.3.0 · © 2026 Rifki Ramdani · MIT · https://uiux.mrramdn.com/en/systems/raster */
 /*
  * Raster: a soft, neutral theme for Tailwind CSS v4. White cards on light gray,
  * pill controls and one blue.
@@ -12,14 +13,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* The release this file came from. Not a design token: nothing reads it. */
+  --raster-build: "raster 0.3.0 · uiux.mrramdn.com";
   --background: #f4f4f4;
   --foreground: #0a0a0a;
   --card: #ffffff;
   --card-foreground: #0a0a0a;
   --popover: #ffffff;
   --popover-foreground: #0a0a0a;
-  --primary: #007aff;
-  --primary-hover: #006ae0;
+  --primary: #0066e0;
+  --primary-hover: #0058c2;
   --primary-foreground: #ffffff;
   --secondary: #eeeeee;
   --secondary-foreground: #0a0a0a;
@@ -27,7 +30,7 @@
   --muted-foreground: #666666;
   --accent: #eeeeee;
   --accent-foreground: #0a0a0a;
-  --destructive: #ff3b30;
+  --destructive: #d70015;
   --destructive-foreground: #ffffff;
   --success: #34c759;
   --warning: #ff9500;
@@ -35,6 +38,7 @@
   --input: #d1d1d1;
   --ring: #007aff;
   --radius: 1.5rem;
+  color-scheme: light;
 }
 
 .dark {
@@ -44,8 +48,8 @@
   --card-foreground: #fafafa;
   --popover: #1a1a1a;
   --popover-foreground: #fafafa;
-  --primary: #0a84ff;
-  --primary-hover: #3d9bff;
+  --primary: #0066e0;
+  --primary-hover: #0071e3;
   --primary-foreground: #ffffff;
   --secondary: #2a2a2a;
   --secondary-foreground: #fafafa;
@@ -53,13 +57,14 @@
   --muted-foreground: #a1a1a1;
   --accent: #2a2a2a;
   --accent-foreground: #fafafa;
-  --destructive: #ff453a;
+  --destructive: #d70015;
   --destructive-foreground: #ffffff;
   --success: #30d158;
   --warning: #ff9f0a;
   --border: #2a2a2a;
   --input: #4a4a4a;
   --ring: #0a84ff;
+  color-scheme: dark;
 }
 
 @theme {
